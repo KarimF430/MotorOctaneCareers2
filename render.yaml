@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: careerconnect-app
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: STORAGE_BACKEND
+        value: sheets
+      - key: GOOGLE_SERVICE_ACCOUNT_EMAIL
+        fromGroup: google-credentials
+      - key: GOOGLE_PRIVATE_KEY
+        fromGroup: google-credentials
+      - key: GOOGLE_SHEET_ID
+        fromGroup: google-credentials
+    disk:
+      name: uploads
+      mountPath: /opt/render/project/src/server/uploads
+      sizeGB: 1
