@@ -11,12 +11,8 @@ services:
       - key: STORAGE_BACKEND
         value: sheets
       - key: GOOGLE_SERVICE_ACCOUNT_EMAIL
-        fromGroup: google-credentials
+        sync: false
       - key: GOOGLE_PRIVATE_KEY
-        fromGroup: google-credentials
+        sync: false
       - key: GOOGLE_SHEET_ID
-        fromGroup: google-credentials
-    disk:
-      name: uploads
-      mountPath: /opt/render/project/src/server/uploads
-      sizeGB: 1
+        sync: false
